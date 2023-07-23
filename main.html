@@ -1,0 +1,259 @@
+<body>
+<div id="main"> 
+<div id="affichage">
+    <input type="text" id="inputaffichage" disabled="disabled" value="0"></input>
+</div>
+<div id="high">
+    <button id="sept">
+        <h1>7</h1> 
+     </button>
+     <button id="huit">
+        <h1>8</h1> 
+     </button>
+     <button id="neuf">
+        <h1>9</h1> 
+     </button>
+     <button id="diviser">
+        <h1>/</h1> 
+     </button>
+</div>
+<div id="middlle-high">
+    <button id="quatre">
+        <h1>4</h1> 
+     </button>
+     <button id="cinq">
+        <h1>5</h1> 
+     </button>
+     <button id="six">
+        <h1>6</h1> 
+     </button>
+     <button id="foix">
+        <h1>X</h1> 
+     </button>
+</div>
+<div id="middlle-low">
+    <button id="un">
+        <h1>1</h1> 
+     </button>
+     <button id="deux">
+        <h1>2</h1> 
+     </button>
+     <button id="trois">
+        <h1>3</h1> 
+     </button>
+     <button id="moins">
+        <h1>-</h1> 
+     </button>
+</div>
+<div id="low">
+    <button id="zero">
+        <h1>0</h1> 
+     </button>
+     <button id="egal">
+        <h1>=</h1> 
+     </button>
+     <button id="plus">
+        <h1>+</h1> 
+     </button>
+</div>
+
+</div>
+</body>
+
+<script type="text/javascript">
+var premiernbr=true;
+var inputaffichage = document.getElementById("inputaffichage");
+var sept = document.getElementById("sept");
+var huit = document.getElementById("huit");
+var neuf = document.getElementById("neuf");
+var diviser = document.getElementById("diviser");
+var quatre = document.getElementById("quatre");
+var cinq = document.getElementById("cinq");
+var six = document.getElementById("six");
+var foix = document.getElementById("foix");
+var un = document.getElementById("un");
+var deux = document.getElementById("deux");
+var trois = document.getElementById("trois");
+var moins = document.getElementById("moins");
+var zero = document.getElementById("zero");
+var egal = document.getElementById("egal");
+var plus = document.getElementById("plus");
+var nbrencours="";
+var nbrprecedent="";
+var operateur="";
+
+
+sept.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("7");
+});
+huit.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("8");
+});
+neuf.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("9");
+});
+quatre.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("4");
+});
+cinq.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("5");
+});
+six.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("6");
+});
+un.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("1");
+});
+deux.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("2");
+});
+trois.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("3");
+});
+zero.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("0");
+});
+moins.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("-");
+});
+plus.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("+");
+});
+foix.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("X");
+});
+diviser.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("/");
+});
+egal.addEventListener('click', event => {
+    inputaffichage.value=clickbouton("=");
+});
+
+function clickbouton(nombre){
+
+    //inputaffichage.value="";
+    if(premiernbr==true){   
+        premiernbr=false;
+        return(nombre);
+    }else{
+        switch(nombre){
+            case "1" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);            
+            case "2" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "3" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "4" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "5" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "6" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "7" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "8" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "9" :
+            nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "0" :
+                nbrencours = inputaffichage.value+nombre;
+                return(nbrencours);
+            case "-" :
+                nbrprecedent = inputaffichage.value;
+                operateur=nombre;
+                premiernbr=true;
+                return(nombre);
+            case "+" :
+                nbrprecedent = inputaffichage.value;
+                operateur=nombre;
+                premiernbr=true;
+                return(nombre);
+            case "/" :
+                nbrprecedent = inputaffichage.value;
+                operateur=nombre;
+                premiernbr=true;
+                return(nombre);
+            case "X" :
+                nbrprecedent = inputaffichage.value;
+                operateur=nombre;
+                premiernbr=true;
+                return(nombre);    
+            case "=" :
+                premiernbr=true;
+                if(operateur=="/" && inputaffichage.value=="0"){
+                    return("Division par 0 impossible");
+                }
+                switch(operateur){
+                    case "-":
+                        nbrencours=parseInt(nbrprecedent)-parseInt(inputaffichage.value);
+                        premiernbr=true;
+                        return(nbrencours.toString());
+                    case "+":
+                        nbrencours=parseInt(nbrprecedent)+parseInt(inputaffichage.value);
+                        premiernbr=true;
+                        return(nbrencours.toString());
+                    case "X":
+                        nbrencours=parseInt(nbrprecedent)*parseInt(inputaffichage.value);
+                        premiernbr=true;
+                        return(nbrencours.toString());
+                    case "/":
+                        nbrencours=parseInt(nbrprecedent)/parseInt(inputaffichage.value);
+                        premiernbr=true;
+                        taillestring = nbrencours.length;
+                        if(taillestring >=10){
+                            nbrencours=nbrencours.split(10);
+                            return(nbrencours.toString());
+                        }else{
+                            return(nbrencours.toString());
+                        }
+                        
+                }
+                
+        }
+    }
+   
+}
+
+</script>
+
+<style>
+    #affichage,#high,#middlle-high, #middlle-low,#low{
+        height: 20%;
+        margin: 1%;
+    }
+  
+    
+    #sept,#huit,#neuf,#diviser,#quatre,#cinq,#six,#foix,#un,#deux,#trois,#moins,#egal,#moins,#plus{
+        width: 22%;
+        height: 80%;
+        margin: 1%;
+        border-radius: 10%;
+        color:antiquewhite ;
+        background-color:blue;
+    }
+    #zero{
+        width: 46%;
+        height: 80%;
+        margin: 1%;
+        border-radius: 10%;
+    }
+
+    #inputaffichage{
+        width: 95%;
+        height: 80%;
+        margin: 1%;
+        text-align: right;
+        font-size: xx-large;
+    }
+    
+    
+</style>
